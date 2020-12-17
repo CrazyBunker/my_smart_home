@@ -1,0 +1,154 @@
+name: Home
+views:
+  - title: Home
+    id: main
+    icon: mdi:floor-plan
+    badges:
+      - entity: sun.sun
+      - entity: sensor.kholodnaia_voda
+
+      - entity: sensor.goriachaia_voda
+        #      - entity: sensor.temperatura_v_komnate
+        #      - entity: sensor.vlazhnost_v_komnate
+    cards:
+      - type: entities
+        entities:
+          - entity: weather.myhome
+            #          - entity: sensor.current_temp
+          - entity: sensor.temperatura_v_komnate
+          - entity: sensor.vlazhnost_v_komnate
+      - type: vertical-stack
+        cards:
+          - type: glance
+            entities:
+              - entity: sensor.processor_use_percent
+              - entity: sensor.load_1m
+              - entity: sensor.load_5m
+              - entity: sensor.load_15m
+              - entity: sensor.memory_free
+              - entity: sensor.redmi_note_8t_uroven_zariada_akkumuliatora
+              - entity: sensor.disk_use_percent
+              - entity: sensor.disk_use_percent_var_lib_mysql
+            show_name: false
+            state_color: false
+            show_state: true
+            show_icon: true
+          - type: glance
+            entities:
+              - entity: binary_sensor.check_proxy
+              - entity: binary_sensor.check_fridge
+              - entity: binary_sensor.check_retropie
+              - entity: switch.power_on_pc
+            state_color: true
+            show_state: false
+            show_name: false
+  - title: Приборы учета
+    icon: mdi:counter
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - sensor.kholodnaia_voda
+          - sensor.goriachaia_voda
+      - type: history-graph
+        entities:
+          - entity: sensor.kholodnaia_voda
+        hours_to_show: 720
+        refresh_interval: 0
+        title: График расхода холодной воды
+  - title: Карты
+    icon: mdi:map-outline
+    path: ''
+    badges: []
+    cards:
+      - type: map
+        entities:
+          - entity: device_tracker.redmi_note_8t
+          - entity: zone.home
+        hours_to_show: 24
+        default_zoom: 12
+  - title: Приготовление
+    icon: mdi:cookie
+    path: ''
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - type: button
+            name: Выключить мультиварку
+            icon: 'mdi:power'
+            confirmation:
+              text: Выключить мультиварку?
+            action_name: 'OFF'
+            tap_action:
+              action: call-service
+              service: water_heater.set_operation_mode
+              service_data:
+                entity_id: water_heater.cooker_rfs_kmc001
+                operation_mode: 'off'
+          - entity: script.1607261840196
+          - type: button
+            name: Сосиски
+            icon: 'mdi:cookie'
+            action_name: 'on'
+            tap_action:
+              action: call-service
+              service: ready4sky.set_manual_program
+              service_data:
+                entity_id: water_heater.cooker_rfs_kmc001
+                prog: 0
+                subprog: 0
+                temp: 100
+                hours: 0
+                minutes: 0
+                dhours: 0
+                dminutes: 0
+                heat: 0
+          - type: button
+            name: Тесто
+            icon: 'mdi:cookie'
+            action_name: 'on'
+            tap_action:
+              action: call-service
+              service: ready4sky.set_manual_program
+              service_data:
+                entity_id: water_heater.cooker_rfs_kmc001
+                prog: 9
+                subprog: 0
+                temp: 30
+                hours: 0
+                minutes: 10
+                dhours: 0
+                dminutes: 0
+                heat: 0
+      - type: picture
+        image: /local/instruction_rmc-m224s.png
+        hold_action:
+          action: none
+
+      - type: entities
+        entities:
+          - entity: sensor.status_rfs_kmc001
+          - entity: sensor.current_time_cook
+            icon: 'mdi:timer'
+          - entity: water_heater.cooker_rfs_kmc001
+            secondary_info: last-updated
+          - entity: input_datetime.time_setup_ready_sky
+          - type: divider
+          - type: button
+            name: Выключить мультиварку
+            icon: 'mdi:power'
+            confirmation:
+              text: Выключить мультиварку?
+            action_name: 'OFF'
+            tap_action:
+              action: call-service
+              service: water_heater.set_operation_mode
+              service_data:
+                entity_id: water_heater.cooker_rfs_kmc001
+                operation_mode: 'off'
+        title: Мультиварка
+        state_color: true
+
+
+

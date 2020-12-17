@@ -1,0 +1,95 @@
+- alias: Установка счетчика холодной воды
+  trigger:
+  - platform: state
+    entity_id: input_number.water_input1
+  action:
+  - service: modbus.write_register
+    data:
+      hub: hub1
+      unit: 1
+      address: 0
+    data_template:
+      value: '{{ states.input_number.water_input1.state|int }}'
+  id: c7112dd1ba904d78923114dcbcec270a
+- alias: Установка таймера мультиварки
+  trigger:
+  - platform: state
+    entity_id: input_datetime.time_setup_ready_sky
+  action:
+  - service: ready4sky.set_timer
+    entity_id: water_heater.cooker_rfs_kmc001
+    data_template:
+      hours: '{{ state_attr( "input_datetime.time_setup_ready_sky" , "hour") }}'
+      minutes: '{{ state_attr( "input_datetime.time_setup_ready_sky", "minute") }}'
+  id: 0cff7590445f402798b0bdfbf279ae19
+- id: '1607361473778'
+  alias: Мультиварка оповещения
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: water_heater.cooker_rfs_kmc001
+  condition: []
+  action:
+  - service: notify.mobile_app_redmi_note_8t
+    data:
+      title: Мультиварка
+      message: 'Изменилось состояние на: {{ states.water_heater.cooker_rfs_kmc001.state
+        }}'
+      data:
+        tag: cook
+        icon_url: /local/kitchen/multicook.png
+        channel: Cook
+  - service: notify.push
+    data:
+      title: Мультиварка
+      message: 'Изменилось состояние на: {{ states.water_heater.cooker_rfs_kmc001.state
+        }}'
+      data:
+        icon: /local/kitchen/multicook.png
+        tag: cook
+  mode: single
+- id: '1607589205051'
+  alias: Проверка утечки воды
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.kholodnaia_voda
+  condition:
+  - condition: device
+    device_id: e601447e4c90d767df011db5d8a3631a
+    domain: device_tracker
+    entity_id: device_tracker.redmi_note_8t
+    type: is_not_home
+  action:
+  - service: notify.push
+    data:
+      message: Утечка воды, у нас потоп, мы все утонем!
+      data:
+        ttl: 86400
+        icon: /local/alerts/water_alert.jpg?
+        priority: high
+  - service: notify.mobile_app_redmi_note_8t
+    data:
+      message: Утечка воды, у нас потоп, мы все утонем!
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+        icon_url: /local/alerts/water_alert.jpg
+  mode: single
+- id: '1607891415622'
+  alias: Оповещение о температуре в комнате
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.temperatura_v_komnate
+    below: '20'
+  condition: []
+  action:
+  - service: notify.mobile_app_redmi_note_8t
+    data:
+      message: Температура в комнате меньше {{ states.sensor.temperatura_v_komnate.state}}
+        градусов.
+      data:
+        channel: Alert
+  mode: single

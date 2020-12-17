@@ -1,0 +1,10 @@
+.*
+*.log
+secrets.yaml
+configurator.py
+custom_components
+html5_push_registrations.conf
+www
+ip_bans.yaml
+private
+http.yaml

@@ -1,0 +1,18 @@
+- name: 'Холодная вода'
+  hub: hub1
+  precision: 3
+  scale: 0.01
+  slave: 1
+  register: 0
+  register_type: input
+  #  device_class: none
+  unit_of_measurement: м³
+- name: 'Горячая вода'
+  hub: hub1
+  scale: 0.01
+  precision: 3
+  slave: 1
+  register: 1
+  register_type: input
+  # device_class: none
+  unit_of_measurement: м³

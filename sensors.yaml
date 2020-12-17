@@ -1,0 +1,23 @@
+- platform: modbus
+  scan_interval: 20
+  registers: !include sensors/modbus1.yaml
+- platform: modbus
+  scan_interval: 60
+  registers: !include sensors/modbus2.yaml
+- platform: template
+  sensors: !include sensors/template.yaml
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: disk_use_percent
+      arg: /var/lib/mysql
+    - type: memory_free
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+    - type: processor_use
+
+
+
+

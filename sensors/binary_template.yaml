@@ -1,0 +1,34 @@
+check_proxy:
+  friendly_name: "Check status proxy"
+  value_template: "{{ is_state('device_tracker.proxy', 'home')}}"
+  icon_template: >
+    {% if states.device_tracker.proxy %}
+      {% if states.device_tracker.proxy.state == 'home' %}
+            mdi:check-network
+      {% elif states.device_tracker.proxy.state == 'not_home' %}
+            mdi:check-network-outline
+      {% endif %}
+    {% endif %}
+check_retropie:
+  friendly_name: "Check status retropie"
+  value_template: "{{ is_state('device_tracker.retropie', 'home')}}"
+  icon_template: >
+    {% if states.device_tracker.retropie %}
+      {% if states.device_tracker.retropie.state == 'home' %}
+            mdi:gamepad-variant
+      {% elif states.device_tracker.retropie.state == 'not_home' %}
+            mdi:gamepad-variant-outline
+      {% endif %}
+    {% endif %}
+check_fridge:
+  friendly_name: "Check status fridge"
+  value_template: "{{ is_state('device_tracker.qca4002', 'home')}}"
+  icon_template: >
+    {% if states.device_tracker.qca4002 %}
+      {% if states.device_tracker.qca4002.state == 'home' %}
+            mdi:fridge
+      {% elif states.device_tracker.qca4002.state == 'not_home' %}
+            mdi:fridge-outline
+      {% endif %}
+    {% endif %}
+

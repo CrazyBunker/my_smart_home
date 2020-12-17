@@ -1,0 +1,8 @@
+sensor.kholodnaia_voda:
+  icon: mdi:water
+sensor.goriachaia_voda:
+  icon: mdi:water
+sensor.current_temp:
+  icon: mdi:temperature-celsius
+device_tracker.redmi_note_8t: {}
+

@@ -1,0 +1,100 @@
+recorder:
+  db_url: !secret mysql_db 
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+    base_url: https://storage.krasnodar-it-service.ru
+    service_name: google_say
+
+
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+modbus: !include modbus.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensor.yaml
+homeassistant:
+    customize: !include customize.yaml
+lovelace:
+  mode: yaml
+
+http: !include http.yaml
+
+notify:
+  - platform: html5
+    name: push
+    vapid_pub_key: !secret secret_vapid_pub_key
+    vapid_prv_key: !secret secret_vapid_prv_key
+    vapid_email: !secret secret_vapid_email
+
+wake_on_lan:
+    mac: !secret mac_pc
+    
+
+switch: !include switch.yaml
+
+panel_iframe:
+  mdiindex:
+    title: MDI Icon Index
+    icon: mdi:vector-square
+    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+  web_configurator:
+    title: Configurator
+    icon: mdi:square-edit-outline
+    url: https://storage.krasnodar-it-service.ru/configurator/
+
+
+google_assistant:
+  project_id: !secret voice_product_id
+  service_account:
+          private_key:  !secret voice_api_key
+          client_email: !secret voice_e-mail
+  expose_by_default: false
+  entity_config:
+     switch.power_on_pc:
+          name: "Мой компьютер"
+          room: "Комната"
+          aliases:
+             - "мой компьютер"
+     sensor.temperatura_v_komnate:
+          name: "Температура в комнате"
+          room: "Комната"
+          aliases:
+             - "текущая температура в комнате"
+             - "какая температура в комнате"          
+     sensor.current_temp:
+          name: "температура на улице"
+          room: "Улица"
+          aliases:
+             - "текущая температура  на улице"
+             - "какая температура на улице"
+     sensor.vlazhnost_v_komnate:
+          name: "Влажность в комнате"
+          room: "Комната"
+          aliases:
+            - "текущая влажность в комнате"
+            - "какая влажность в комнате"
+# Example configuration.yaml entry
+yandex_smart_home:
+  filter:
+    include_domains:
+      - sensor
+      - switch
+      - water_heater
+  entity_config:
+      water_heater.cooker_rfs_kmc001:
+          name: "Мультиварка"
+          room: "Комната"
+          type: devices.types.cooking.multicooker
+               
+  
+
