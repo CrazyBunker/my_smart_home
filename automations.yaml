@@ -28,13 +28,20 @@
   trigger:
   - platform: state
     entity_id: water_heater.cooker_rfs_kmc001
+  - platform: state
+    entity_id: sensor.status_rfs_kmc001
+    attribute: sync
+    to: STARTING PROGRAM
+  - platform: state
+    entity_id: sensor.status_rfs_kmc001
+    to: HEAT
   condition: []
   action:
   - service: notify.mobile_app_redmi_note_8t
     data:
       title: Мультиварка
-      message: 'Изменилось состояние на: {{ states.water_heater.cooker_rfs_kmc001.state
-        }}'
+      message: 'Установлена программа: {{ states.water_heater.cooker_rfs_kmc001.state
+        }}, режим {{ states.sensor.status_rfs_kmc001.state }}'
       data:
         tag: cook
         icon_url: /local/kitchen/multicook.png
@@ -42,8 +49,8 @@
   - service: notify.push
     data:
       title: Мультиварка
-      message: 'Изменилось состояние на: {{ states.water_heater.cooker_rfs_kmc001.state
-        }}'
+      message: 'Установлена программа: {{ states.water_heater.cooker_rfs_kmc001.state
+        }}, режим {{ states.sensor.status_rfs_kmc001.state }}'
       data:
         icon: /local/kitchen/multicook.png
         tag: cook
@@ -56,9 +63,9 @@
     entity_id: sensor.kholodnaia_voda
   condition:
   - condition: device
-    device_id: e601447e4c90d767df011db5d8a3631a
+    device_id: 2cd2716e57fc81bbdb0d2e77f08a6115
     domain: device_tracker
-    entity_id: device_tracker.redmi_note_8t
+    entity_id: device_tracker.e0_cc_f8_99_59_d9
     type: is_not_home
   action:
   - service: notify.push

@@ -1,8 +1,8 @@
 - platform: modbus
-  scan_interval: 20
+  scan_interval: 19
   registers: !include sensors/modbus1.yaml
 - platform: modbus
-  scan_interval: 60
+  scan_interval: 59
   registers: !include sensors/modbus2.yaml
 - platform: template
   sensors: !include sensors/template.yaml

@@ -5,6 +5,7 @@ views:
     icon: mdi:floor-plan
     badges:
       - entity: sun.sun
+      - entity: device_tracker.e0_cc_f8_99_59_d9
       - entity: sensor.kholodnaia_voda
 
       - entity: sensor.goriachaia_voda
@@ -129,24 +130,24 @@ views:
       - type: entities
         entities:
           - entity: sensor.status_rfs_kmc001
-          - entity: sensor.current_time_cook
+          - entity: sensor.status_rfs_kmc001
+            type: attribute
+            attribute: "Timer current"
             icon: 'mdi:timer'
+            tap_action:
+                action: none
           - entity: water_heater.cooker_rfs_kmc001
             secondary_info: last-updated
+            tap_action:
+                action: none
+          - entity: water_heater.cooker_rfs_kmc001
+            type: attribute
+            attribute: "operation_mode"
+            icon: 'mdi:clipboard-list'
           - entity: input_datetime.time_setup_ready_sky
           - type: divider
-          - type: button
-            name: Выключить мультиварку
-            icon: 'mdi:power'
-            confirmation:
-              text: Выключить мультиварку?
-            action_name: 'OFF'
-            tap_action:
-              action: call-service
-              service: water_heater.set_operation_mode
-              service_data:
-                entity_id: water_heater.cooker_rfs_kmc001
-                operation_mode: 'off'
+          - entity: switch.switch_rfs_kmc001 
+          
         title: Мультиварка
         state_color: true
 

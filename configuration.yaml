@@ -24,6 +24,8 @@ sensor: !include sensors.yaml
 binary_sensor: !include binary_sensor.yaml
 homeassistant:
     customize: !include customize.yaml
+    media_dirs:
+        media: /home/homeasistant/.homeassistant/www/sound
 lovelace:
   mode: yaml
 
@@ -47,10 +49,10 @@ panel_iframe:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
-  web_configurator:
-    title: Configurator
-    icon: mdi:square-edit-outline
-    url: https://storage.krasnodar-it-service.ru/configurator/
+    #  web_configurator:
+    #    title: Configurator
+    #    icon: mdi:square-edit-outline
+    #    url: https://storage.krasnodar-it-service.ru/configurator/
 
 
 google_assistant:
@@ -90,11 +92,39 @@ yandex_smart_home:
       - sensor
       - switch
       - water_heater
+      - binary_sensor
+    exclude_entities:
+      - switch.switch_rfs_kmc001    
   entity_config:
       water_heater.cooker_rfs_kmc001:
           name: "Мультиварка"
           room: "Комната"
           type: devices.types.cooking.multicooker
-               
-  
+          modes:
+            program:
+              entity_id: water_heater.cooker_rfs_kmc001
+              set_script:
+                  service: water_heater.set_operation_mode
+                  data:
+                     entity_id: water_heater.cooker_rfs_kmc001
+                  data_template:
+                     operation_mode: "{{ value }}"
+              mapping:
+                  frying: 'Жарка'
+                  cereals: 'Рис'
+                  multicooker: 'Мультиповар'
+                  pilaf: 'Плов'
+                  steam: 'Пар'
+                  baking: 'Выпечка'
+                  stewing: 'Тушить'
+                  soup: 'Суп'
+                  milk_porridge: 'Молочная каша'
+                  yogurt: 'Йогурт'
+                  slow_cook: 'Экспресс'
+
+logger:
+  default: warning
+  logs:
+          #custom_components.yandex_smart_home: debug
+      custom_components.ready4sky: debug
 
