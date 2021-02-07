@@ -1,0 +1,36 @@
+- name: 'Холодная вода'
+  hub: hub1
+  precision: 3
+  scale: 0.01
+  slave: 1
+  register: 0
+  register_type: input
+  #  device_class: none
+  unit_of_measurement: м³
+- name: 'Горячая вода'
+  hub: hub1
+  scale: 0.01
+  precision: 3
+  slave: 1
+  register: 1
+  register_type: input
+  # device_class: none
+  unit_of_measurement: м³
+- name: 'Температура в комнате'
+  hub: hub1
+  scale: 0.1
+  precision: 1
+  slave: 1
+  register: 3
+  register_type: holding
+  device_class: temperature
+  unit_of_measurement: °C
+- name: 'Влажность в комнате'
+  hub: hub1
+  scale: 1
+  precision: 0
+  slave: 1
+  register: 4
+  register_type: holding
+  device_class: humidity
+  unit_of_measurement: "%"
