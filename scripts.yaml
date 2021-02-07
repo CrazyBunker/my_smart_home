@@ -6,7 +6,7 @@
       entity_id: water_heater.cooker_rfs_kmc001
       prog: 2
       subprog: 0
-      temp: 180
+      temp: 150
       hours: 0
       minutes: 12
       dhours: 0
@@ -23,7 +23,7 @@
       entity_id: water_heater.cooker_rfs_kmc001
       prog: 2
       subprog: 0
-      temp: 100
+      temp: 120
       hours: 0
       minutes: 12
       dhours: 0
