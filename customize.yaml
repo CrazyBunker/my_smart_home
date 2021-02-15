@@ -6,3 +6,15 @@ sensor.current_temp:
   icon: mdi:temperature-celsius
 device_tracker.redmi_note_8t: {}
 
+switch.lamp1l:
+  icon: mdi:lightbulb
+switch.lamp2l:
+  icon: mdi:lightbulb
+switch.lamp3l:
+  icon: mdi:lightbulb
+switch.lamp1r:
+  icon: mdi:lightbulb
+switch.lamp2r:
+  icon: mdi:lightbulb
+switch.lamp3r:
+  icon: mdi:lightbulb

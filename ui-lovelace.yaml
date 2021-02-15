@@ -43,6 +43,80 @@ views:
             state_color: true
             show_state: false
             show_name: false
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+                  #           - type: glance
+                  #             entities:
+              - entity: switch.lamp1r
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp1r
+              - entity: switch.lamp2r
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp2r
+              - entity: switch.lamp3r
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp3r
+                    #  show_state: false
+                    #  show_name: false
+              #           - type: glance
+              #             entities:
+              - entity: switch.lamp1l
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp1l
+              - entity: switch.lamp2l
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp2l
+              - entity: switch.lamp3l
+                type: button
+                show_name: false
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.lamp3l
+                #              - entity: switch.lamp7
+                #              - entity: switch.lamp8
+                #              show_state: false
+                #              show_name: false
   - title: Приборы учета
     icon: mdi:counter
     badges: []

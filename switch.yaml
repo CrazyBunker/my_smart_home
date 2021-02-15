@@ -2,3 +2,71 @@
   name: "Power on PC"
   mac: !secret mac_pc 
   host: !secret ip_pc
+
+- platform: modbus
+  scan_interval: 5
+  registers:
+  - name: lamp2L
+    hub: hub1
+    slave: 2
+    register: 1
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp2R
+    hub: hub1
+    slave: 2
+    register: 2
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp3R
+    hub: hub1
+    slave: 2
+    register: 3
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp3L
+    hub: hub1
+    slave: 2
+    register: 4
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp1R
+    hub: hub1
+    slave: 2
+    register: 5
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp1L
+    hub: hub1
+    slave: 2
+    register: 6
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp7
+    hub: hub1
+    slave: 2
+    register: 7
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
+  - name: lamp8
+    hub: hub1
+    slave: 2
+    register: 8
+    command_on: 256
+    command_off: 512
+    state_on: 1
+    state_off: 0
