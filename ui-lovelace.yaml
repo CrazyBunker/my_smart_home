@@ -18,22 +18,9 @@ views:
             #          - entity: sensor.current_temp
           - entity: sensor.temperatura_v_komnate
           - entity: sensor.vlazhnost_v_komnate
+          - entity: input_datetime.budilnik
       - type: vertical-stack
         cards:
-          - type: glance
-            entities:
-              - entity: sensor.processor_use_percent
-              - entity: sensor.load_1m
-              - entity: sensor.load_5m
-              - entity: sensor.load_15m
-              - entity: sensor.memory_free
-              - entity: sensor.redmi_note_8t_uroven_zariada_akkumuliatora
-              - entity: sensor.disk_use_percent
-              - entity: sensor.disk_use_percent_var_lib_mysql
-            show_name: false
-            state_color: false
-            show_state: true
-            show_icon: true
           - type: glance
             entities:
               - entity: binary_sensor.check_proxy
@@ -43,12 +30,17 @@ views:
             state_color: true
             show_state: false
             show_name: false
+          - type: entities
+            entities:
+              - entity: group.kitchen
+              - entity: group.room
+              - entity: group.pc_zone
+              - entity: group.left_line
+              - entity: group.right_line
           - type: grid
             columns: 3
             square: false
             cards:
-                  #           - type: glance
-                  #             entities:
               - entity: switch.lamp1r
                 type: button
                 show_name: false
@@ -79,10 +71,6 @@ views:
                   service: switch.toggle
                   service_data:
                     entity_id: switch.lamp3r
-                    #  show_state: false
-                    #  show_name: false
-              #           - type: glance
-              #             entities:
               - entity: switch.lamp1l
                 type: button
                 show_name: false
@@ -113,10 +101,6 @@ views:
                   service: switch.toggle
                   service_data:
                     entity_id: switch.lamp3l
-                #              - entity: switch.lamp7
-                #              - entity: switch.lamp8
-                #              show_state: false
-                #              show_name: false
   - title: Приборы учета
     icon: mdi:counter
     badges: []
@@ -225,5 +209,23 @@ views:
         title: Мультиварка
         state_color: true
 
-
+  - title: Сервер
+    icon: mdi:server
+    path: ''
+    badges: []
+    cards:
+       - type: glance
+         entities:
+           - entity: sensor.processor_use_percent
+           - entity: sensor.load_1m
+           - entity: sensor.load_5m
+           - entity: sensor.load_15m
+           - entity: sensor.memory_free
+           - entity: sensor.redmi_note_8t_uroven_zariada_akkumuliatora
+           - entity: sensor.disk_use_percent
+           - entity: sensor.disk_use_percent_var_lib_mysql
+         show_name: false
+         state_color: false
+         show_state: true
+         show_icon: true
 

@@ -49,10 +49,6 @@ panel_iframe:
     title: MDI Icon Index
     icon: mdi:vector-square
     url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
-    #  web_configurator:
-    #    title: Configurator
-    #    icon: mdi:square-edit-outline
-    #    url: https://storage.krasnodar-it-service.ru/configurator/
 
 
 google_assistant:
