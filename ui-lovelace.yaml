@@ -9,6 +9,7 @@ views:
       - entity: sensor.kholodnaia_voda
 
       - entity: sensor.goriachaia_voda
+      - entity: switch.klapan_kholodnoi_vody
         #      - entity: sensor.temperatura_v_komnate
         #      - entity: sensor.vlazhnost_v_komnate
     cards:
@@ -115,6 +116,9 @@ views:
         hours_to_show: 720
         refresh_interval: 0
         title: График расхода холодной воды
+      - type: entities
+        entities:
+          - entity: switch.klapan_kholodnoi_vody
   - title: Карты
     icon: mdi:map-outline
     path: ''

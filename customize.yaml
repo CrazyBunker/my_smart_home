@@ -18,3 +18,5 @@ switch.lamp2r:
   icon: mdi:lightbulb
 switch.lamp3r:
   icon: mdi:lightbulb
+switch.klapan_kholodnoi_vody:
+  icon: mdi:water-pump

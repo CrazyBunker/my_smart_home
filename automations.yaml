@@ -104,12 +104,10 @@
   alias: Включить свет в зоне home
   description: Включить свет когда подхожу к дому
   trigger:
-  - platform: device
-    device_id: e601447e4c90d767df011db5d8a3631a
-    domain: device_tracker
-    entity_id: device_tracker.redmi_note_8t
-    type: enters
-    zone: zone.home
+  - platform: state
+    entity_id: device_tracker.e0_cc_f8_99_59_d9
+    from: not_home
+    to: home
   condition:
   - condition: device
     device_id: 2cd2716e57fc81bbdb0d2e77f08a6115
@@ -119,18 +117,16 @@
   action:
   - service: switch.turn_on
     data: {}
-    entity_id: group.room
+    entity_id: group.kitchen
   mode: single
 - id: '1614508874323'
   alias: Выключить свет
   description: Выключить свет при покидании зоны home
   trigger:
-  - platform: device
-    device_id: e601447e4c90d767df011db5d8a3631a
-    domain: device_tracker
-    entity_id: device_tracker.redmi_note_8t
-    type: leaves
-    zone: zone.home
+  - platform: state
+    entity_id: device_tracker.e0_cc_f8_99_59_d9
+    from: home
+    to: not_home
   condition:
   - condition: device
     device_id: 2cd2716e57fc81bbdb0d2e77f08a6115
