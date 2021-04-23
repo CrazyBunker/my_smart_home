@@ -1,6 +1,38 @@
 recorder:
   db_url: !secret mysql_db 
-
+  purge_keep_days: 120
+  commit_interval: 60
+  include:
+    domains:
+      - sensor
+      - light
+      - binary_sensor
+      - automation
+      - switch
+      - water_heater
+    entities:
+      - device_tracker.e0_cc_f8_99_59_d9
+      - device_tracker.homeasistant
+      - device_tracker.qq_nb
+      - device_tracker.redmi_note_8t
+      - device_tracker.retropie 
+  exclude:
+    domains:
+      - script
+      - automation
+      - device_tracker
+      - sun
+      - zone 
+      - input
+      - group
+      - updater
+    entities:
+      - light.light_redmond_sky
+      - sensor.yandex_smart_home_status
+      - sensor.status_redmond_sky
+    event_types:
+      - call_service
+ 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -22,6 +54,7 @@ scene: !include scenes.yaml
 modbus: !include modbus.yaml
 sensor: !include sensors.yaml
 binary_sensor: !include binary_sensor.yaml
+history: !include history.yaml
 homeassistant:
     customize: !include customize.yaml
     media_dirs:

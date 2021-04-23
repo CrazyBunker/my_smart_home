@@ -160,3 +160,21 @@
     data: {}
     entity_id: group.kitchen
   mode: single
+- id: '1619043497285'
+  alias: Сброс клапана холодной воды
+  description: Ежедневное перекрытие шарового клапана холодной воды
+  trigger:
+  - platform: time_pattern
+    hours: '9'
+    seconds: '0'
+    minutes: '0'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.klapan_kholodnoi_vody
+  - delay: '30'
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.klapan_kholodnoi_vody
+  mode: single

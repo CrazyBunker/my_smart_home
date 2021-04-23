@@ -34,3 +34,12 @@
   register_type: holding
   device_class: humidity
   unit_of_measurement: "%"
+- name: 'Клапан холодной воды'
+  hub: hub1
+  scale: 1
+  precision: 0
+  slave: 1
+  register: 5
+  register_type: holding
+  #  device_class: none
+  #unit_of_measurement: "%"

@@ -119,6 +119,14 @@ views:
       - type: entities
         entities:
           - entity: switch.klapan_kholodnoi_vody
+      - type: gauge
+        entity: sensor.klapan_kholodnoi_vody
+        min: 5
+        max: 30
+        severity:
+                green: 10
+                yellow: 20
+                red: 30
   - title: Карты
     icon: mdi:map-outline
     path: ''
