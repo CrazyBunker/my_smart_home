@@ -1,0 +1,43 @@
+include:
+  domains:
+    - climate
+    - zone
+    - vacuum
+    - person
+    - zone
+    - sun
+    - switch
+  entities:
+    - sensor.cpu_temperature
+    - sensor.current_temp
+    - sensor.mb_temperature
+    - sensor.fan_cpu
+    - sensor.datchik_dvizheniia_v_koridore
+    - sensor.datchik_dvizheniia_v_vannoi
+    - sensor.disk_use_percent
+    - sensor.disk_use_percent_var_lib_database 
+    - sensor.goriachaia_voda
+    - sensor.kholodnaia_voda
+    - sensor.kommunalka
+    - sensor.load_15m
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.swap_use_percent
+    - sensor.memory_use_percent
+    - sensor.powerman_battery_charge
+      #    - sensor.powerman_input_line_frequency
+      #    - sensor.powerman_input_voltage
+    - sensor.powerman_load
+      #    - sensor.powerman_output_voltage
+    - sensor.powerman_status
+    - sensor.powerman_ups_temperature
+    - sensor.processor_use_percent
+    - sensor.raskhod_vody_za_mesiats
+    - sensor.temperatura_v_komnate
+    - sensor.vlazhnost_v_komnate
+    - device_tracker.redmi_note_8t
+    - device_tracker.redmi_note_8_pro
+    - device_tracker.homeasistant
+    - device_tracker.qq_nb
+    - device_tracker.retropie 
+ 

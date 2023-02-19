@@ -1,0 +1,477 @@
+- id: '1607589205051'
+  alias: Проверка утечки воды
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.kholodnaia_voda
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      device_id: 172738afaf6859554b700e439fb5c3f3
+      domain: device_tracker
+      entity_id: device_tracker.redmi_note_8_pro
+      type: is_not_home
+    - condition: device
+      device_id: e601447e4c90d767df011db5d8a3631a
+      domain: device_tracker
+      entity_id: device_tracker.redmi_note_8t
+      type: is_not_home
+  action:
+  - service: notify.push
+    data:
+      message: Утечка воды, у нас потоп, мы все утонем!
+      data:
+        ttl: 86400
+        icon: /local/alerts/water_alert.jpg?
+        priority: high
+  - service: notify.mobile_app_redmi_note_8t
+    data:
+      message: Утечка воды, у нас потоп, мы все утонем!
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+        icon_url: /local/alerts/water_alert.jpg
+  - service: notify.telegram
+    data:
+      message: Утечка воды, у нас потоп, мы все утонем!
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+        icon_url: /local/alerts/water_alert.jpg
+  mode: single
+- id: '1607891415622'
+  alias: Оповещение о температуре в комнате
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.temperatura_v_komnate
+    below: '20'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.temperatura_v_komnate
+    above: '10'
+  action:
+  - service: notify.mobile_app_redmi_note_8t
+    data:
+      message: Температура в комнате меньше {{ states.sensor.temperatura_v_komnate.state}}
+        градусов.
+      data:
+        channel: Alert
+  - service: notify.telegram
+    data:
+      title: ''
+      message: ''
+      data:
+        photo:
+        - url: https://storage.krasnodar-it-service.ru/ooghievuXeivaZoochaidah7/render/d-solo/1nl81o6Mz/homeassistant?orgId=1&panelId=6&from=now%2Fd&to=now&tz=Europe%2FMoscow
+          caption: Температура в комнате меньше {{ states.sensor.temperatura_v_komnate.state}}
+            градусов.
+  mode: single
+- id: '1614508576843'
+  alias: Включить свет в зоне home
+  description: Включить свет когда подхожу к дому
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8t
+    zone: zone.home
+    event: enter
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8_pro
+    zone: zone.home
+    event: enter
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.lamp1l
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.lampk1
+  - service: notify.telegram
+    data:
+      message: Включить свет в зоне home
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+  mode: single
+- id: '1614508874323'
+  alias: Выключить свет
+  description: Выключить свет при покидании зоны home
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8t
+    zone: zone.home
+    event: leave
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8_pro
+    zone: zone.home
+    event: leave
+  condition:
+  - condition: not
+    conditions:
+    - condition: or
+      conditions:
+      - condition: zone
+        entity_id: device_tracker.redmi_note_8_pro
+        zone: zone.home
+      - condition: zone
+        entity_id: device_tracker.redmi_note_8t
+        zone: zone.home
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: ' group.all_light'
+  - service: notify.telegram
+    data:
+      message: Выключить свет в зоне home
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+  mode: single
+- id: '1614511616822'
+  alias: Будильник
+  description: ''
+  trigger:
+  - platform: time
+    at: input_datetime.budilnik
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.lamp1l
+  mode: single
+- id: '1619043497285'
+  alias: Сброс клапана холодной воды
+  description: Ежедневное перекрытие шарового клапана холодной воды
+  trigger:
+  - platform: time_pattern
+    hours: '9'
+    seconds: '0'
+    minutes: '0'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.klapan_kholodnoi_vody
+  - delay: '30'
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.klapan_kholodnoi_vody
+  mode: single
+- id: '1623265595129'
+  alias: Оповещение о расходе воды
+  description: ''
+  trigger:
+  - platform: time_pattern
+    hours: '23'
+    seconds: '0'
+    minutes: '55'
+  condition: []
+  action:
+  - service: notify.telegram
+    data:
+      title: ''
+      message: ''
+      data:
+        photo:
+        - url: https://storage.krasnodar-it-service.ru/ooghievuXeivaZoochaidah7/render/d-solo/1nl81o6Mz/homeassistant?orgId=1&panelId=12&from=now%2Fd&to=now&tz=Europe%2FMoscow
+          caption: '*Расход воды на сегодня составил:*
+
+            Холодная вода: {{states.sensor.raskhod_kholodnoi_vody_za_den.state}} м³
+
+            Горячая вода: {{states.sensor.raskhod_goriachei_vody_za_den.state}} м³'
+  mode: single
+- id: '1626303186430'
+  alias: Кондиционер выключить
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8_pro_2
+    zone: zone.haier_zone
+    event: leave
+  - platform: zone
+    entity_id: device_tracker.redmi_note_8t
+    zone: zone.haier_zone
+    event: leave
+  condition:
+  - condition: and
+    conditions:
+    - condition: not
+      conditions:
+      - condition: zone
+        entity_id: device_tracker.redmi_note_8_pro_2
+        zone: zone.haier_zone
+    - condition: not
+      conditions:
+      - condition: zone
+        entity_id: device_tracker.redmi_note_8t
+        zone: zone.haier_zone
+  action:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: 'off'
+    target:
+      entity_id: climate.haier
+  mode: single
+- id: '1630246538499'
+  alias: Horizontal swing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.horizontal_modes
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: hub2
+      unit: 3
+      address: 2
+    data_template:
+      value: '{% if is_state("input_select.horizontal_modes", "Center") %} 0 {% elif
+        is_state("input_select.horizontal_modes", "Max left") %} 3 {% elif is_state("input_select.horizontal_modes",
+        "Left") %} 4 {% elif is_state("input_select.horizontal_modes", "Right") %}
+        5 {% elif is_state("input_select.horizontal_modes", "Max right") %} 6 {% else
+        %} 7 {% endif %} '
+  mode: single
+- alias: Селектор горизонатaльных шторок
+  description: Триггер для установки селектора
+  trigger:
+  - platform: state
+    entity_id: sensor.sostoianie_gorizontalnoi_shtorki
+  action:
+    service: input_select.select_option
+    target:
+      entity_id: input_select.horizontal_modes
+    data:
+      option: '{% if is_state("sensor.sostoianie_gorizontalnoi_shtorki", "0") %} Center
+        {% elif is_state("sensor.sostoianie_gorizontalnoi_shtorki", "3") %} Max left
+        {% elif is_state("sensor.sostoianie_gorizontalnoi_shtorki", "4") %} Left {%
+        elif is_state("sensor.sostoianie_gorizontalnoi_shtorki", "5") %} Right {%
+        elif is_state("sensor.sostoianie_gorizontalnoi_shtorki", "6") %} Max right
+        {% else %} Auto {% endif %} '
+  mode: single
+  id: 32a7a08a02f04e94bafee764e51b594e
+- id: '1630247491841'
+  alias: Vertical swing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.vertical_modes
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: hub2
+      unit: 3
+      address: 3
+    data_template:
+      value: '{% if is_state("input_select.vertical_modes", "Health up") %} 1 {% elif
+        is_state("input_select.vertical_modes", "Max up") %} 2 {% elif is_state("input_select.vertical_modes",
+        "Up") %} 4 {% elif is_state("input_select.vertical_modes", "Center") %} 6
+        {% elif is_state("input_select.vertical_modes", "Down") %} 8 {% elif is_state("input_select.vertical_modes",
+        "Max down") %} 10 {% elif is_state("input_select.vertical_modes", "Health
+        down") %} 3 {% else %} 12 {% endif %} '
+  mode: single
+- alias: Селектор вертикальных шторок
+  description: Триггер для установки селектора
+  trigger:
+  - platform: state
+    entity_id: sensor.sostoianie_vertikalnoi_shtorki
+  action:
+    service: input_select.select_option
+    target:
+      entity_id: input_select.vertical_modes
+    data:
+      option: '{% if is_state("sensor.sostoianie_vertikalnoi_shtorki", "1") %} Health
+        up {% elif is_state("sensor.sostoianie_vertikalnoi_shtorki", "2") %} Max up
+        {% elif is_state("sensor.sostoianie_vertikalnoi_shtorki", "4") %} Up {% elif
+        is_state("sensor.sostoianie_vertikalnoi_shtorki", "6") %} Center {% elif is_state("sensor.sostoianie_vertikalnoi_shtorki",
+        "8") %} Down {% elif is_state("sensor.sostoianie_vertikalnoi_shtorki", "10")
+        %} Max down {% elif is_state("sensor.sostoianie_vertikalnoi_shtorki", "3")
+        %} Health down {% else %} Auto {% endif %} '
+  mode: single
+  id: 538112df4b124c60871a037c7679b6c1
+- id: '1630264584154'
+  alias: Управление светом в коридоре
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.datchik_dvizheniia_v_koridore
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.datchik_dvizheniia_v_koridore
+        state: '1'
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        entity_id: switch.lampk1
+    default:
+    - service: switch.turn_off
+      data: {}
+      entity_id: switch.lampk1
+  mode: single
+- id: '1630521276978'
+  alias: Управленеи светом в ванной
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.datchik_dvizheniia_v_vannoi
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.datchik_dvizheniia_v_vannoi
+        state: '1'
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        entity_id: switch.lampb1
+    default:
+    - service: switch.turn_off
+      data: {}
+      entity_id: switch.lampb1
+  mode: single
+- id: '1630523224129'
+  alias: Вентиляторв в ванной
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.datchik_dvizheniia_v_vannoi
+    from: '0'
+    to: '1'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.ventiliatsiia_v_vannoi
+  - delay:
+      hours: 0
+      minutes: 15
+      seconds: 0
+      milliseconds: 0
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.ventiliatsiia_v_vannoi
+  mode: single
+- id: '1640958788244'
+  alias: У нас гости
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.datchik_dvizheniia_v_koridore
+    from: '0'
+    to: '1'
+    for: 00:00:10
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      device_id: e601447e4c90d767df011db5d8a3631a
+      domain: device_tracker
+      entity_id: device_tracker.redmi_note_8t
+      type: is_not_home
+    - condition: device
+      device_id: 172738afaf6859554b700e439fb5c3f3
+      domain: device_tracker
+      entity_id: device_tracker.redmi_note_8_pro
+      type: is_not_home
+  action:
+  - service: notify.telegram
+    data:
+      message: У нас гости!
+      data:
+        ttl: 86400
+        priority: high
+        channel: Alert
+  mode: single
+- alias: Установка таймера в коридоре
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_number.timer_kor
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: hub1
+      unit: 5
+      address: 2
+    data_template:
+      value: input_number.timer_kor
+  mode: single
+  id: 5c7eeb5865f14664b96c6008c53a41ca
+- alias: Обновление установки таймера в коридоре
+  description: Триггер для установки таймера в коридоре
+  trigger:
+  - platform: state
+    entity_id: sensor.taimer_datchika_dvizheniia_v_koridore
+  action:
+    service: input_number.set_value
+    target:
+      entity_id: input_number.timer_kor
+    data:
+      value: sensor.taimer_datchika_dvizheniia_v_koridore
+  mode: single
+  id: 06c63d7c10ca4729bb8372189fbde86f
+- id: '1670402208707'
+  alias: Время ожидания датчиков после 01:00
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      slave: 5
+      address: 2
+      value: 40
+      hub: hub1
+  - service: modbus.write_register
+    data:
+      address: 3
+      slave: 5
+      value: 40
+      hub: hub1
+  mode: single
+- id: '1670402396266'
+  alias: Время ожидания датчиков после 08:00
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      slave: 5
+      address: 2
+      value: 840
+      hub: hub1
+  - service: modbus.write_register
+    data:
+      address: 3
+      slave: 5
+      value: 840
+      hub: hub1

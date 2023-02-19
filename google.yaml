@@ -1,0 +1,66 @@
+project_id: !secret voice_product_id
+service_account:
+        private_key:  !secret voice_api_key
+        client_email: !secret voice_e-mail
+expose_by_default: false
+entity_config:
+   switch.power_on_pc:
+        name: "Мой компьютер"
+        room: "Комната"
+        aliases:
+           - "мой компьютер"
+   sensor.temperatura_v_komnate:
+        name: "Температура в комнате"
+        room: "Комната"
+        aliases:
+           - "текущая температура в комнате"
+           - "какая температура в комнате"          
+   sensor.current_temp:
+        name: "температура на улице"
+        room: "Улица"
+        aliases:
+           - "текущая температура  на улице"
+           - "какая температура на улице"
+   sensor.vlazhnost_v_komnate:
+        name: "Влажность в комнате"
+        room: "Комната"
+        aliases:
+          - "текущая влажность в комнате"
+          - "какая влажность в комнате"
+   switch.lamp1l:
+        name: "Лампа слева на кухне"
+        room: "Кухня"
+        aliases:
+          - "свет на кухне слева"
+          - "свет слева на кухне"
+   switch.lamp1r:
+        name: "Лампа справа на кухне"
+        room: "Кухня"
+        aliases:
+          - "свет на кухне справа"
+          - "свет справа на кухне"
+   switch.lamp2l:
+        name: "Лампа слева в комнате"
+        room: "Комната"
+        aliases:
+          - "свет в комнате слева"
+          - "свет слева в комнате"
+   switch.lamp2r:
+        name: "Лампа справа в комнате"
+        room: "Комната"
+        aliases:
+          - "свет в комнате справа"
+          - "свет справа в комнате"
+   switch.lamp3l:
+        name: "Лампа слева возле компа"
+        room: "Комната"
+        aliases:
+          - "свет возле компа слева"
+          - "свет слева возле компа"
+   switch.lamp3r:
+        name: "Лампа справа возле компа"
+        room: "Комната"
+        aliases:
+          - "свет возле компа справа"
+          - "свет справа возле компа"
+

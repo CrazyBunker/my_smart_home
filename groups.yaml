@@ -1,0 +1,49 @@
+kitchen:
+  name: Свет в кухне
+  icon: mdi:food
+  entities:
+    - switch.lamp1l
+    - switch.lamp1r
+room:
+  name: Свет в комнате
+  icon: mdi:sofa
+  entities:
+    - switch.lamp2l
+    - switch.lamp2r
+pc_zone:
+  name: Свет над компом
+  icon: mdi:laptop
+  entities:
+    - switch.lamp3l
+    - switch.lamp3r
+left_line:
+  name: Левая линия света
+  icon: mdi:alpha-l-circle
+  entities:
+    - switch.lamp1l
+    - switch.lamp2l
+    - switch.lamp3l
+right_line:
+  name: Правая линия света
+  icon: mdi:alpha-r-circle
+  entities:
+    - switch.lamp1r
+    - switch.lamp2r
+    - switch.lamp3r
+koridor:
+  name: Свет в коридоре
+  icon: mdi:alpha-r-circle
+  entities:
+    - switch.lampk1
+    - switch.lampk2
+all_light:
+    - switch.lamp1l
+    - switch.lamp1r
+    - switch.lamp2l
+    - switch.lamp2r
+    - switch.lamp3l
+    - switch.lamp3r
+    - switch.lampk1
+    - switch.lampk2
+    - switch.lampb1
+

@@ -1,0 +1,10 @@
+resources:
+  - type: module
+    url: /local/community/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+  - type: module
+    url: /local/community/button-card/button-card.js
+  - type: module
+    url: /local/community/mini-climate-card/mini-climate-card-bundle.js
+                
+name: Home
+views: !include_dir_merge_list ui/views

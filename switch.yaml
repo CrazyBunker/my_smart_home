@@ -1,0 +1,4 @@
+- platform: wake_on_lan
+  name: "Power on PC"
+  mac: !secret mac_pc 
+  host: !secret ip_pc

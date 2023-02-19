@@ -1,0 +1,6 @@
+- platform: template
+  sensors: !include sensors/binary_template.yaml
+
+
+
+

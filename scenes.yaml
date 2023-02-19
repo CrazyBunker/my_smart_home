@@ -1,0 +1,27 @@
+- id: '1619043773956'
+  name: Комната-свет
+  entities:
+    switch.lamp1l:
+      friendly_name: lamp1L
+      icon: mdi:lightbulb
+      state: 'on'
+    switch.lamp1r:
+      friendly_name: lamp1R
+      icon: mdi:lightbulb
+      state: 'on'
+    switch.lamp2l:
+      friendly_name: lamp2L
+      icon: mdi:lightbulb
+      state: 'off'
+    switch.lamp2r:
+      friendly_name: lamp2R
+      icon: mdi:lightbulb
+      state: 'off'
+    switch.lamp3l:
+      friendly_name: lamp3L
+      icon: mdi:lightbulb
+      state: 'off'
+    switch.lamp3r:
+      friendly_name: lamp3R
+      icon: mdi:lightbulb
+      state: 'off'

@@ -1,0 +1,40 @@
+default_config:
+http: !include http.yaml
+recorder: !include recorder.yaml
+influxdb: !include influxdb.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+modbus: !include modbus.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensor.yaml
+history: !include history.yaml
+climate: !include climate.yaml
+switch: !include switch.yaml
+notify: !include notify.yaml
+logger: !include logger.yaml
+panel_iframe: !include iframe.yaml
+yandex_smart_home: !include yandex.yaml
+#google_assistant: !include google.yaml
+telegram_bot: !include telegram.yaml
+camera: !include camera.yaml
+
+homeassistant:
+    customize: !include customize.yaml
+    media_dirs:
+        media: /home/hass/.homeassistant/www/sound
+    allowlist_external_dirs:
+        - /home/hass/.homeassistant/www
+lovelace:
+  mode: yaml
+  
+wake_on_lan:
+    mac: !secret mac_pc
+    #vacuum:
+    #    platform: xiaomi_miio
+    #    host: !secret vacuum_host
+    #    token: !secret vacuum_token
+frontend:
+  themes: !include themes.yaml
+

@@ -1,0 +1,198 @@
+- title: Home
+  id: main
+  icon: mdi:floor-plan
+  badges:
+    - entity: sun.sun
+    - entity: device_tracker.redmi_note_8t
+      style: >
+        @keyframes blinker { 50% { opacity: 0; } }
+        :host {
+        color: {% if is_state('binary_sensor.garage', 'on') %} red {%else %} white {% endif %};
+        --label-badge-red: {% if is_state('binary_sensor.garage', 'on') %} red {% else %} white {%endif %};
+        --label-badge-text-color: {% if is_state('binary_sensor.garage', 'on') %} red {% else %} green {%endif %};
+        animation: {% if is_state('binary_sensor.garage', 'on') %} blinker 2s linear infinite {%endif %};
+        }
+    - entity: device_tracker.redmi_note_8_pro 
+    - entity: sensor.kholodnaia_voda
+
+    - entity: sensor.goriachaia_voda
+    - entity: switch.klapan_kholodnoi_vody
+    - entity: script.1630519599639
+
+    - entity: sensor.powerman_load
+    - entity: sensor.powerman_battery_charge
+    - entity: sensor.kommunalka
+    - entity: sensor.elektroenergiia
+    - entity: sensor.raskhod_vody_za_mesiats
+      #      - entity: sensor.mfu_sostoianie
+      #      - entity: sensor.mfu_schetchik_stranits
+      #      - entity: sensor.mfu_toner
+
+      #      - entity: sensor.temperatura_v_komnate
+      #      - entity: sensor.vlazhnost_v_komnate
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: grid
+          columns: 3
+          square: false
+          cards:
+            - entity: switch.lampk1
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lampk1
+            - entity: switch.lampk2
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lampk2
+            - entity: switch.lampb1
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lampb1
+                  #      - type: grid
+                  #        columns: 3
+                  #        square: false
+                  #        cards:
+            - entity: switch.lamp1r
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp1r
+            - entity: switch.lamp2r
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp2r
+            - entity: switch.lamp3r
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp3r
+            - entity: switch.lamp1l
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp1l
+            - entity: switch.lamp2l
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp2l
+            - entity: switch.lamp3l
+              type: button
+              show_name: false
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.lamp3l
+        - type: vertical-stack
+          cards:
+            - type: custom:mini-climate
+              entity: climate.pritochnaia_ventiliatsiia
+            - type: custom:mini-climate
+              entity: climate.pritochnaia_ventiliatsiia_2
+              #entity: climate.haier
+              temperature:
+                unit: '°C'
+                round: 1 
+                #  - type: thermostat
+                #    entity: climate.pritochnaia_ventiliatsiia
+            - type: thermostat
+              entity: climate.haier
+            - type: entities
+              entities:
+                - entity:  input_select.vertical_modes
+                - entity:  input_select.horizontal_modes 
+                - entity:  switch.indikatsiia_konditsioner
+    - type: vertical-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: group.kitchen
+            - entity: group.room
+            - entity: group.pc_zone
+            - entity: group.left_line
+            - entity: group.right_line
+        - type: entities
+          entities:
+            - entity:  switch.ventiliatsiia_v_vannoi
+            - entity:  switch.ventiliatsiia_v_komnate
+            - entity:  switch.ventiliatsiia_v_komnate_high 
+    - type: entities
+      entities:
+        - entity: weather.myhome
+          #          - entity: sensor.current_temp
+        - entity: sensor.temperatura_v_komnate
+        - entity: sensor.vlazhnost_v_komnate
+        - entity: input_datetime.budilnik
+          #        - entity: sensor.powerman_status
+          #        - entity: sensor.powerman_load
+          #        - entity: sensor.powerman_battery_charge
+          #          - entity: sensor.vacuum_status
+          #          - entity: sensor.vacuum_battery
+    - type: grid
+      columns: 3
+      square: false
+      cards: !include_dir_merge_list ../cards/sensors
+    - type: glance
+      entities:
+        - entity: binary_sensor.check_fridge
+        - entity: binary_sensor.check_retropie
+        - entity: switch.power_on_pc
+      state_color: true
+      show_state: false
+      show_name: false
+    - type: iframe
+      url: !secret url_6 
+      aspect_ratio: 75%
+    - type: iframe
+      url: !secret url_34 
+      aspect_ratio: 75%
+      #      - type: vertical-stack
+      #        cards:

@@ -1,0 +1,41 @@
+- name: hub1
+  type: serial
+  method: rtu
+  port: /dev/ttyUSB1
+  baudrate: 9600
+  stopbits: 1
+  bytesize: 8
+  parity: N
+  sensors:
+      !include sensors/modbus_hub1.yaml
+  switches:
+      !include switch/modbus_hub1.yaml
+
+- name: hub2
+  type: serial
+  method: rtu
+  port: /dev/ttyUSB0
+  baudrate: 9600
+  stopbits: 1
+  bytesize: 8
+  parity: N
+  sensors:
+      !include sensors/modbus_hub2.yaml
+  switches:
+      !include switch/modbus_hub2.yaml
+
+      #- name: hub1
+      #  type: tcp
+      #  host: 127.0.0.1
+      #  port: 502
+      #  sensors:
+      #      !include sensors/modbus_hub1.yaml
+      #  switches:
+      #      !include switch/modbus_hub1.yaml
+      #
+      #- name: hub2
+      #  type: tcp
+      #  host: 127.0.0.1
+      #  port: 503
+      #  switches:
+      #      !include switch/modbus_hub2.yaml

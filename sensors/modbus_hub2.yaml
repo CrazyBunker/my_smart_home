@@ -1,0 +1,10 @@
+- name: 'Состояние горизонтальной шторки'
+  slave: 3
+  address: 2
+  input_type: holding
+  scan_interval: 10
+- name: 'Состояние вертикальной шторки'
+  slave: 3
+  address: 3
+  input_type: holding
+  scan_interval: 10

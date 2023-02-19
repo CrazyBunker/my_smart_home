@@ -1,0 +1,11 @@
+green_badge:
+  label-badge-red: green
+  label-badge-border-color: lightgrey
+  label-badge-background-color: white
+  label-badge-text-color: green
+
+red_badge:
+  label-badge-red: grey
+  label-badge-border-color: lightgrey
+  label-badge-background-color: white
+  label-badge-text-color: red

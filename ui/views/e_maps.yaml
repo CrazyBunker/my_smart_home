@@ -1,0 +1,12 @@
+- title: Карты
+  icon: mdi:map-outline
+  path: ''
+  badges: []
+  cards:
+    - type: map
+      entities:
+        - entity: device_tracker.redmi_note_8t
+        - entity: device_tracker.redmi_note_8_pro
+        - entity: zone.home
+      hours_to_show: 24
+      default_zoom: 12

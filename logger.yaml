@@ -1,0 +1,5 @@
+default: error
+#logs:
+        #custom_components.yandex_smart_home: debug
+        #   custom_components.ready4sky: debug
+        #custom_components.zhimodbus: debug

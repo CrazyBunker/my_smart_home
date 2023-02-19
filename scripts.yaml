@@ -1,0 +1,76 @@
+'1607261840196':
+  alias: Макароны
+  sequence:
+  - service: ready4sky.set_manual_program
+    data:
+      entity_id: water_heater.cooker_rfs_kmc001
+      prog: 2
+      subprog: 0
+      temp: 150
+      hours: 0
+      minutes: 12
+      dhours: 0
+      dminutes: 0
+      heat: 0
+  - wait_template: ''
+    continue_on_timeout: true
+    timeout: '720'
+  - service: notify.push
+    data:
+      message: Мультиварка вышла на режим
+  - service: ready4sky.set_manual_program
+    data:
+      entity_id: water_heater.cooker_rfs_kmc001
+      prog: 2
+      subprog: 0
+      temp: 120
+      hours: 0
+      minutes: 12
+      dhours: 0
+      dminutes: 0
+      heat: 0
+  - wait_template: ''
+    continue_on_timeout: true
+    timeout: '900'
+  - service: script.1607264499631
+    data: {}
+  - service: notify.push
+    data:
+      message: Мультиварка выключена
+  mode: single
+'1607264499631':
+  alias: Выключить мультиварку
+  sequence:
+  - service: water_heater.set_operation_mode
+    data:
+      operation_mode: 'off'
+    entity_id: water_heater.cooker_rfs_kmc001
+  mode: single
+  icon: mdi:power
+'1630519599639':
+  alias: Спать
+  sequence:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.haier
+      temperature: 27
+  - service: modbus.write_register
+    data:
+      hub: hub2
+      unit: 3
+      value: '2'
+      address: 3
+  - service: modbus.write_register
+    data:
+      hub: hub2
+      unit: 3
+      value: '6'
+      address: 2
+  - service: switch.turn_off
+    data: {}
+    entity_id: group.all_light
+  - service: climate.set_fan_mode
+    data:
+      fan_mode: min
+    entity_id: climate.haier
+  mode: single

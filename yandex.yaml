@@ -1,0 +1,34 @@
+filter:
+  include_domains:
+    - sensor
+    - switch
+      #    - water_heater
+    - binary_sensor
+      #    exclude_entities:
+      #      - switch.switch_rfs_kmc001    
+      #  entity_config:
+      #      water_heater.cooker_rfs_kmc001:
+      #          name: "Мультиварка"
+      #          room: "Комната"
+      #          type: devices.types.cooking.multicooker
+      #          modes:
+      #            program:
+      #              entity_id: water_heater.cooker_rfs_kmc001
+      #              set_script:
+      #                  service: water_heater.set_operation_mode
+      #                  data:
+      #                     entity_id: water_heater.cooker_rfs_kmc001
+      #                  data_template:
+      #                     operation_mode: "{{ value }}"
+      #              mapping:
+      #                  frying: 'Жарка'
+      #                  cereals: 'Рис'
+      #                  multicooker: 'Мультиповар'
+      #                  pilaf: 'Плов'
+      #                  steam: 'Пар'
+      #                  baking: 'Выпечка'
+      #                  stewing: 'Тушить'
+      #                  soup: 'Суп'
+      #                  milk_porridge: 'Молочная каша'
+      #                  yogurt: 'Йогурт'
+      #                  slow_cook: 'Экспресс'

@@ -1,0 +1,58 @@
+- platform: zhimodbus
+  hub: hub2
+  name: [Haier]
+
+  fan_modes: {  'min': 3, 'mid': 2, 'max': 1, 'auto': 5 }
+  hvac_modes: { 'off': 240, cool: 32, heat: 128, dry: 64, fan_only: 192 , auto: 0}
+  swing_modes: { 'off': 0, both: 3, vertical: 1, horizontal: 2, manual: 4}
+  fan_mode: { registers: [1], slave: 3 }
+  hvac_mode: { registers: [0], slave: 3 }
+  #hvac_off: { registers: [6], slave: 3 }
+  temperature: { registers: [5], slave: 3, scale: 1 }
+  swing_mode: { registers: [7], slave: 3 }
+  target_temperature: { registers: [4], slave: 3, scale: 1 }
+
+
+- platform: generic_thermostat
+  name: Приточная вентиляция
+  heater: switch.ventiliatsiia_v_komnate
+  target_sensor: sensor.temperatura_v_komnate
+  min_temp: 20
+  max_temp: 30
+  ac_mode: true
+  #  target_temp: 23
+  target_temp_step: 1
+  cold_tolerance: 0.0
+  hot_tolerance: 0.5
+  min_cycle_duration:
+    seconds: 30
+  #keep_alive:
+    #minutes: 1
+    #  initial_hvac_mode: "off"
+  away_temp: 28
+  comfort_temp: 26
+  # home_temp: 27
+  # sleep_temp: 26
+  precision: 0.1
+
+- platform: generic_thermostat
+  name: Приточная вентиляция 2
+  heater: switch.ventiliatsiia_v_komnate_high
+  target_sensor: sensor.temperatura_v_komnate
+  min_temp: 20
+  max_temp: 30
+  ac_mode: true
+  #  target_temp: 23
+  target_temp_step: 0.1
+  cold_tolerance: 0.0
+  hot_tolerance: 0.5
+  min_cycle_duration:
+    seconds: 30
+  #keep_alive:
+    #minutes: 1
+    # initial_hvac_mode: "off"
+  away_temp: 28
+  comfort_temp: 26
+  # home_temp: 27
+  # sleep_temp: 26
+  precision: 0.1

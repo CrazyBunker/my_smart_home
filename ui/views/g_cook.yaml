@@ -1,0 +1,88 @@
+- title: Приготовление
+  icon: mdi:cookie
+  path: ''
+  badges: []
+  cards:
+    - type: entities
+      entities:
+        - sensor.kholodilnik
+        - binary_sensor.kholodilnik_door_open
+        - sensor.kholodilnik_freezer_temp
+        - sensor.kholodilnik_refrigerator_temp
+
+          #      - type: entities
+          #        entities:
+          #          - type: button
+          #            name: Выключить мультиварку
+          #            icon: 'mdi:power'
+          #            confirmation:
+          #              text: Выключить мультиварку?
+          #            action_name: 'OFF'
+          #            tap_action:
+          #              action: call-service
+          #              service: water_heater.set_operation_mode
+          #              service_data:
+          #                entity_id: water_heater.cooker_rfs_kmc001
+          #                operation_mode: 'off'
+          #          - entity: script.1607261840196
+          #          - type: button
+          #            name: Сосиски
+          #            icon: 'mdi:cookie'
+          #            action_name: 'on'
+          #            tap_action:
+          #              action: call-service
+          #              service: ready4sky.set_manual_program
+          #              service_data:
+          #                entity_id: water_heater.cooker_rfs_kmc001
+          #                prog: 0
+          #                subprog: 0
+          #                temp: 100
+          #                hours: 0
+          #                minutes: 0
+          #                dhours: 0
+          #                dminutes: 0
+          #                heat: 0
+          #          - type: button
+          #            name: Тесто
+          #            icon: 'mdi:cookie'
+          #            action_name: 'on'
+          #            tap_action:
+          #              action: call-service
+          #              service: ready4sky.set_manual_program
+          #              service_data:
+          #                entity_id: water_heater.cooker_rfs_kmc001
+          #                prog: 9
+          #                subprog: 0
+          #                temp: 30
+          #                hours: 0
+          #                minutes: 10
+          #                dhours: 0
+          #                dminutes: 0
+          #                heat: 0
+          #      - type: picture
+          #        image: /local/instruction_rmc-m224s.png
+          #        hold_action:
+          #          action: none
+          #      - type: entities
+          #        entities:
+          #          - entity: sensor.status_rfs_kmc001
+          #          - entity: sensor.status_rfs_kmc001
+          #            type: attribute
+          #            attribute: "Timer current"
+          #            icon: 'mdi:timer'
+          #            tap_action:
+          #                action: none
+          #          - entity: water_heater.cooker_rfs_kmc001
+          #            secondary_info: last-updated
+          #            tap_action:
+          #                action: none
+          #          - entity: water_heater.cooker_rfs_kmc001
+          #            type: attribute
+          #            attribute: "operation_mode"
+          #            icon: 'mdi:clipboard-list'
+          #          - entity: input_datetime.time_setup_ready_sky
+          #          - type: divider
+          #          - entity: switch.switch_rfs_kmc001 
+          #          
+          #        title: Мультиварка
+          #        state_color: true

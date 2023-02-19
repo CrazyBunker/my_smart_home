@@ -1,0 +1,40 @@
+- title: Сервер
+  icon: mdi:server
+  path: ''
+  badges: []
+  cards:
+     - type: iframe
+       url: !secret  url_2 
+       aspect_ratio: 50%
+     - type: iframe
+       url: !secret url_4 
+       aspect_ratio: 50%
+     - type: iframe
+       url: !secret url_10 
+       aspect_ratio: 50%
+     - type: iframe
+       url: !secret url_14 
+       aspect_ratio: 50%
+     - type: iframe
+       url: !secret url_16 
+       aspect_ratio: 50%
+       #       - type: iframe
+       #         url: !secret url_18 
+       #         aspect_ratio: 50%
+       #       - type: iframe
+       #         url: !secret url_20 
+       #         aspect_ratio: 50%
+     - type: glance
+       entities:
+         - entity: sensor.processor_use_percent
+         - entity: sensor.load_1m
+         - entity: sensor.load_5m
+         - entity: sensor.load_15m
+         - entity: sensor.memory_use_percent
+           #         - entity: sensor.redmi_note_8t_uroven_zariada_akkumuliatora
+         - entity: sensor.disk_use_percent
+         - entity: sensor.disk_use_percent_var_lib_database
+       show_name: false
+       state_color: false
+       show_state: true
+       show_icon: true

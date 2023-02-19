@@ -1,0 +1,16 @@
+- platform: xiaomi_cloud_map_extractor
+  host: !secret vacuum_host
+  token: !secret vacuum_token
+  username: !secret vacuum_username
+  password: !secret vacuum_password
+  #  country: ru
+  draw: ['all']
+  scan_interval: 5
+  sizes:
+    charger_radius: 10
+    vacuum_radius: 10
+  map_transformation:
+    scale: 5
+  attributes:
+    - calibration_points
+      #    - rooms

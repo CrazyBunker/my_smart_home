@@ -1,0 +1,31 @@
+- title: Приборы учета
+  icon: mdi:counter
+  badges: []
+  cards:
+    - type: entities
+      entities:
+        - sensor.kholodnaia_voda
+        - sensor.goriachaia_voda
+        - input_number.timer_kor
+        - input_number.timer_wash
+          #      - type: history-graph
+          #        entities:
+          #          - entity: sensor.kholodnaia_voda
+          #        hours_to_show: 720
+          #        refresh_interval: 0
+          #        title: График расхода холодной воды
+    - type: iframe
+      url: !secret url_12 
+      aspect_ratio: 100%
+    - type: entities
+      entities:
+        - entity: switch.klapan_kholodnoi_vody
+    - type: gauge
+      entity: sensor.klapan_kholodnoi_vody
+      min: 5
+      max: 30
+      severity:
+              green: 10
+              yellow: 20
+              red: 30
+

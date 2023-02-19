@@ -1,0 +1,58 @@
+ - title: Vacuum
+   icon: mdi:robot-vacuum
+   path: ''
+   badges: []
+   cards:
+
+     - type: custom:xiaomi-vacuum-map-card
+       #        title: Xiaomi Vacuum Map Card
+       language: ru
+       entity: vacuum.roborock_vacuum_a15
+       map_locked: true
+       two_finger_pan: true
+       map_source:
+         camera: camera.xiaomi_cloud_map_extractor
+         crop:
+            top: 350
+            bottom: 350
+            left: 350
+            right: 350
+       calibration_source:
+         camera: true
+       map_modes:
+         - template: vacuum_clean_segment
+           predefined_selections:
+             - id: 16
+               outline: [[23350,29500], [23350,30425], [26200,30425], [26200,29500]]
+               label:
+                 text: "Коридор"
+                 x: 24875
+                 y: 29962
+             - id: 17
+               #Ванная
+               outline: [[21850,29500], [21750,31350], [23300,31350], [23300,29500]]
+               label:
+                 text: "Ванная"
+                 x: 22600 
+                 y: 30425
+             - id: 18
+               outline: [[21850,27550], [21850,29400], [26200,29400], [26200,27550]]
+               label:
+                 text: "Кухня-плитка"
+                 x: 24025 
+                 y: 28475
+             - id: 21
+               outline: [[21850,26250], [21850,27500], [26200,27500], [26200,26250]]
+               label:
+                 text: "Кухня-ламинат"
+                 x: 24025 
+                 y: 26875
+             - id: 20
+               outline: [[21850,22350], [21850,26250], [26200,26250], [26200,22350]]
+               label:
+                 text: "Комната"
+                 x: 24025 
+                 y: 24400
+         - template: vacuum_clean_zone
+         - template: vacuum_follow_path
+         - template: vacuum_goto

@@ -1,0 +1,14 @@
+current_temp:
+  friendly_name: "Температура на улице"
+  unit_of_measurement: "°C"
+  device_class: temperature
+  value_template: "{{ state_attr('weather.myhome' , 'temperature')  }}"
+  #current_time_cook:
+  #  friendly_name: "Таймер мультиварки"
+  #  value_template: "{{ state_attr('sensor.status_rfs_kmc001' , 'Timer current')  }}"
+
+haier_temp:
+  friendly_name: "Температура кондиционер"
+  unit_of_measurement: "°C"
+  device_class: temperature
+  value_template: "{{ state_attr('climate.haier' , 'current_temperature')  }}"

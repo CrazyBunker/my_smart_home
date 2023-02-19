@@ -1,0 +1,45 @@
+sensor.kholodnaia_voda:
+  icon: mdi:water
+sensor.goriachaia_voda:
+  icon: mdi:water
+sensor.current_temp:
+  icon: mdi:temperature-celsius
+device_tracker.redmi_note_8t: {}
+
+switch.lamp1l:
+  icon: mdi:lightbulb
+switch.lamp2l:
+  icon: mdi:lightbulb
+switch.lamp3l:
+  icon: mdi:lightbulb
+switch.lamp1r:
+  icon: mdi:lightbulb
+switch.lamp2r:
+  icon: mdi:lightbulb
+switch.lamp3r:
+  icon: mdi:lightbulb
+switch.klapan_kholodnoi_vody:
+  icon: mdi:water-pump
+switch.lampk1:
+  icon: mdi:lightbulb-on-outline
+switch.lampk2:
+  icon: mdi:lightbulb-on-outline
+switch.lampb1:
+  icon: mdi:toilet
+switch.ventiliatsiia_v_vannoi:
+  icon: mdi:fan
+switch.ventiliatsiia_na_kukhne:
+  icon: mdi:fan
+switch.ventiliatsiia_na_kukhne_high:
+  icon: mdi:fan-speed-2
+
+
+  #device_tracker.redmi_note_8t:
+  #    theme: >
+  #      if (state === 'home') return 'green_badge';
+  #      return 'red_badge';
+  #
+  #device_tracker.redmi_note_8_pro:
+  #    theme: >
+  #      if (state === 'home') return 'green_badge';
+  #      return 'red_badge';

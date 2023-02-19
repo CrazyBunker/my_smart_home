@@ -1,0 +1,39 @@
+- title: UPS
+  icon: mdi:car-battery
+  path: ''
+  badges: []
+  cards:
+    - type: gauge
+      entity: sensor.powerman_battery_charge
+      min: 0
+      max: 100
+      severity:
+              green: 100
+              yellow: 50
+              red: 20
+    - type: gauge
+      entity: sensor.powerman_load
+      min: 0
+      max: 100
+      severity:
+              green: 50
+              yellow: 70
+              red: 100
+    - type: iframe
+      url: !secret  url_22
+      aspect_ratio: 50%
+    - type: iframe
+      url: !secret  url_24
+      aspect_ratio: 50%
+    - type: iframe
+      url: !secret  url_26
+      aspect_ratio: 50%
+    - type: iframe
+      url: !secret  url_28
+      aspect_ratio: 50%
+    - type: iframe
+      url: !secret  url_30
+      aspect_ratio: 50%
+    - type: iframe
+      url: !secret  url_32
+      aspect_ratio: 50%

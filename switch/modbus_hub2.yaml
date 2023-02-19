@@ -1,0 +1,5 @@
+- name: Индикация кондиционер
+  slave: 3
+  address: 8
+  command_on: 1
+  command_off: 0

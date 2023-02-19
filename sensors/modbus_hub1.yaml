@@ -1,0 +1,71 @@
+- name: 'Датчик движения в коридоре'
+  slave: 5
+  address: 0
+  input_type: holding
+  scan_interval: 1
+
+- name: 'Таймер датчика движения в коридоре'
+  slave: 5
+  address: 2
+  input_type: holding
+  scan_interval: 60
+
+- name: 'Датчик движения в ванной'
+  slave: 5
+  address: 1
+  input_type: holding
+  scan_interval: 1
+
+- name: 'Таймер датчика движения в ванной'
+  slave: 5
+  address: 3
+  input_type: holding
+  scan_interval: 60
+
+- name: 'Холодная вода'
+  precision: 3
+  scale: 0.01
+  slave: 1
+  address: 0
+  input_type: input
+  #  device_class: none
+  unit_of_measurement: м³
+  scan_interval: 30
+
+- name: 'Горячая вода'
+  scale: 0.01
+  precision: 3
+  slave: 1
+  address: 1
+  input_type: input
+  # device_class: none
+  unit_of_measurement: м³
+  scan_interval: 30
+
+- name: 'Температура в комнате'
+  scale: 0.1
+  precision: 1
+  slave: 6
+  address: 0
+  input_type: holding
+  device_class: temperature
+  unit_of_measurement: °C
+  scan_interval: 30
+
+- name: 'Влажность в комнате'
+  scale: 1
+  precision: 0
+  slave: 6
+  address: 1
+  input_type: holding
+  device_class: humidity
+  unit_of_measurement: "%"
+  scan_interval: 30
+
+- name: 'Клапан холодной воды'
+  scale: 1
+  precision: 0
+  slave: 1
+  address: 5
+  input_type: holding
+  scan_interval: 30
