@@ -3,6 +3,7 @@
   address: 0
   input_type: holding
   scan_interval: 1
+  unique_id: moved_k
 
 - name: 'Таймер датчика движения в коридоре'
   slave: 5
@@ -15,6 +16,7 @@
   address: 1
   input_type: holding
   scan_interval: 1
+  unique_id: moved_b
 
 - name: 'Таймер датчика движения в ванной'
   slave: 5
@@ -31,6 +33,7 @@
   #  device_class: none
   unit_of_measurement: м³
   scan_interval: 30
+  unique_id: sensor_sch_b
 
 - name: 'Горячая вода'
   scale: 0.01
@@ -41,6 +44,7 @@
   # device_class: none
   unit_of_measurement: м³
   scan_interval: 30
+  unique_id: sensor_scg_b
 
 - name: 'Температура в комнате'
   scale: 0.1
@@ -51,6 +55,7 @@
   device_class: temperature
   unit_of_measurement: °C
   scan_interval: 30
+  unique_id: sensor_t
 
 - name: 'Влажность в комнате'
   scale: 1
@@ -61,6 +66,7 @@
   device_class: humidity
   unit_of_measurement: "%"
   scan_interval: 30
+  unique_id: sensor_h
 
 - name: 'Клапан холодной воды'
   scale: 1

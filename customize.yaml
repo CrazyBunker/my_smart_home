@@ -32,7 +32,10 @@ switch.ventiliatsiia_na_kukhne:
   icon: mdi:fan
 switch.ventiliatsiia_na_kukhne_high:
   icon: mdi:fan-speed-2
-
+sensor.powerman_load:
+   device_class: battery
+sensor.kommunalka:
+   device_class: illumination 
 
   #device_tracker.redmi_note_8t:
   #    theme: >
