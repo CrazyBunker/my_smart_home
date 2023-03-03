@@ -10,6 +10,12 @@
       !include sensors/modbus_hub1.yaml
   switches:
       !include switch/modbus_hub1.yaml
+  fans:
+      !include fan/modbus_hub1.yaml
+  lights:
+      !include light/modbus_hub1.yaml
+
+
 
 - name: hub2
   type: serial

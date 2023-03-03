@@ -1,0 +1,81 @@
+- name: lamp2L
+  slave: 2
+  address: 1
+  command_on: 256
+  command_off: 512
+  unique_id: switch_2l
+  verify:
+      state_on: 1
+      state_off: 0
+- name: lamp2R
+  slave: 2
+  address: 2
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_2r
+- name: lamp3R
+  slave: 2
+  address: 3
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_3r
+- name: lamp3L
+  slave: 2
+  address: 4
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_3l
+- name: lamp1R
+  slave: 2
+  address: 5
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_1r
+- name: lamp1L
+  slave: 2
+  address: 6
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_1l
+- name: lampK1
+  slave: 4
+  address: 1
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_k
+- name: lampK2
+  slave: 4
+  address: 2
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_k2
+- name: lampB1
+  slave: 4
+  address: 3
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_b

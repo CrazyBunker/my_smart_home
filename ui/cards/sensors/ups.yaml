@@ -10,9 +10,9 @@
       - text-shadow: 0px 0px 5px black
       - text-transform: capitalize
     grid:
-      - grid-template-areas: '"i temp" "n n" "status status" "load load" "charge charge" "battery battery" "input input" "output output"'
+      - grid-template-areas: '"i temp" "n n" "status status" "load load" "charge charge"' #"battery battery" "input input" "output output"'
       - grid-template-columns: 1fr 1fr
-      - grid-template-rows: 1fr min-content min-content min-content min-content min-content min-content min-content
+      - grid-template-rows: 1fr min-content min-content min-content min-contenti #min-content min-content min-content
     name:
       - font-weight: bold
       - font-size: 13px
@@ -52,19 +52,19 @@
         - align-self: middle
         - justify-self: start
         - --text-color-sensor: '[[[ if (states["sensor.powerman_battery_charge"].state < 100) return "yellow"; ]]]'
-      battery:
-        - align-self: middle
-        - justify-self: start
-        - --text-color-sensor: '[[[ if (states["sensor.powerman_battery_voltage"].state < 25) return "red"; ]]]'
-      input:
-        - padding-bottom: 2px
-        - align-self: middle
-        - justify-self: start
-        - --text-color-sensor: '[[[ if (states["sensor.powerman_input_voltage"].state < 210) return "red"; ]]]'
-      output:
-        - align-self: middle
-        - justify-self: start
-        - --text-color-sensor: '[[[ if (states["sensor.powerman_output_voltage"].state > 240) return "red"; ]]]'
+          #      battery:
+          #        - align-self: middle
+          #        - justify-self: start
+          #        - --text-color-sensor: '[[[ if (states["sensor.powerman_battery_voltage"].state < 25) return "red"; ]]]'
+          #      input:
+          #        - padding-bottom: 2px
+          #        - align-self: middle
+          #        - justify-self: start
+          #        - --text-color-sensor: '[[[ if (states["sensor.powerman_input_voltage"].state < 210) return "red"; ]]]'
+          #      output:
+          #        - align-self: middle
+          #        - justify-self: start
+          #        - --text-color-sensor: '[[[ if (states["sensor.powerman_output_voltage"].state > 240) return "red"; ]]]'
   custom_fields:
      temp: >
       [[[
@@ -94,25 +94,25 @@
           style="width: 12px; height: 12px; color: deepskyblue;">
           </ha-icon><span>Charge: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_battery_charge'].state}%</span></span>`
       ]]]
-     battery: >
-      [[[
-        return `<ha-icon
-          icon="mdi:car-battery"
-          style="width: 12px; height: 12px; color: deepskyblue;">
-          </ha-icon><span>Battery: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_battery_voltage'].state}V</span></span>`
-      ]]]
-     input: >
-       [[[
-         return `<ha-icon
-           icon="mdi:power-plug"
-           style="width: 12px; height: 12px; color: deepskyblue;">
-           </ha-icon><span>Input: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_input_voltage'].state}V</span></span>`
-       ]]]
-     output: >
-       [[[
-         return `<ha-icon
-           icon="mdi:power-socket-de"
-           style="width: 12px; height: 12px; color: deepskyblue;">
-           </ha-icon><span>Output: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_output_voltage'].state}V</span></span>`
-       ]]]
-
+#     battery: >
+#      [[[
+#        return `<ha-icon
+#          icon="mdi:car-battery"
+#          style="width: 12px; height: 12px; color: deepskyblue;">
+#          </ha-icon><span>Battery: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_battery_voltage'].state}V</span></span>`
+#      ]]]
+#     input: >
+#       [[[
+#         return `<ha-icon
+#           icon="mdi:power-plug"
+#           style="width: 12px; height: 12px; color: deepskyblue;">
+#           </ha-icon><span>Input: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_input_voltage'].state}V</span></span>`
+#       ]]]
+#     output: >
+#       [[[
+#         return `<ha-icon
+#           icon="mdi:power-socket-de"
+#           style="width: 12px; height: 12px; color: deepskyblue;">
+#           </ha-icon><span>Output: <span style="color: var(--text-color-sensor);">${states['sensor.powerman_output_voltage'].state}V</span></span>`
+#       ]]]
+#

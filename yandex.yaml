@@ -6,43 +6,42 @@ notifier:
 filter:
   include_entities:
     - sensor.current_temp
-    - sensor.kholodnaia_voda
-    - sensor.kommunalka
-    - sensor.powerman_battery_charge
+      #    - sensor.kholodnaia_voda
+      #    - sensor.kommunalka
+      #    - sensor.powerman_battery_charge
     - sensor.powerman_load
     - sensor.temperatura_v_komnate
-    - sensor.vlazhnost_v_komnate
+      #    - sensor.vlazhnost_v_komnate
     - switch.indikatsiia_konditsioner
-    - switch.lamp1l
-    - switch.lamp1r
-    - switch.lamp2l
-    - switch.lamp2r
-    - switch.lamp3l
-    - switch.lamp3r
-    - switch.lampb1
-    - switch.lampk1
-    - switch.ventiliatsiia_v_komnate
-    - switch.ventiliatsiia_v_komnate_high
-    - switch.ventiliatsiia_v_vannoi
-    - sensor.powerman_load
+    - light.lamp1l
+    - light.lamp1r
+    - light.lamp2l
+    - light.lamp2r
+    - light.lamp3l
+    - light.lamp3r
+    - light.lampb1
+    - light.lampk1
+      #    - fan.ventiliatsiia_v_komnate
+      #    - fan.ventiliatsiia_v_komnate_high
+    - fan.ventiliatsiia_v_vannoi
     - climate.haier
+    - climate.termostat
+
 entity_config:
+  sensor.temperatura_v_komnate:
+    name: "Погода в квартире"
+    properties:
+      - type: temperature
+        entity: sensor.temperatura_v_komnate
+      - type: humidity
+        entity: sensor.vlazhnost_v_komnate
+      - type: battery_level
+        entity: sensor.powerman_battery_charge
+
   sensor.powerman_load:
-     room: "Балкон"
-     name: "Загрузка ибп"
-     type: devices.types.sensor
-  sensor.kommunalka:
-     room: "Комната"
-     name: "Коммуналка"
-     type: devices.types.sensor
-        #  include_domains:
-          #- sensor
-      #    - switch
-      #    - water_heater
-      #- binary_sensor
-      #    exclude_entities:
-      #      - switch.switch_rfs_kmc001    
-      #  entity_config:
+    room: "Балкон"
+    name: "Загрузка ибп"
+    type: devices.types.sensor
       #      water_heater.cooker_rfs_kmc001:
       #          name: "Мультиварка"
       #          room: "Комната"

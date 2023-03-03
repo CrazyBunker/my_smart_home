@@ -37,112 +37,109 @@
           columns: 3
           square: false
           cards:
-            - entity: switch.lampk1
+            - entity: light.lampk1
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lampk1
-            - entity: switch.lampk2
+                  entity_id: light.lampk1
+            - entity: light.lampk2
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lampk2
-            - entity: switch.lampb1
+                  entity_id: light.lampk2
+            - entity: light.lampb1
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lampb1
+                  entity_id: light.lampb1
                   #      - type: grid
                   #        columns: 3
                   #        square: false
                   #        cards:
-            - entity: switch.lamp1r
+            - entity: light.lamp1r
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp1r
-            - entity: switch.lamp2r
+                  entity_id: light.lamp1r
+            - entity: light.lamp2r
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp2r
-            - entity: switch.lamp3r
+                  entity_id: light.lamp2r
+            - entity: light.lamp3r
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp3r
-            - entity: switch.lamp1l
+                  entity_id: light.lamp3r
+            - entity: light.lamp1l
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp1l
-            - entity: switch.lamp2l
+                  entity_id: light.lamp1l
+            - entity: light.lamp2l
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp2l
-            - entity: switch.lamp3l
+                  entity_id: light.lamp2l
+            - entity: light.lamp3l
               type: button
               show_name: false
               tap_action:
                 action: none
               double_tap_action:
                 action: call-service
-                service: switch.toggle
+                service: light.toggle
                 service_data:
-                  entity_id: switch.lamp3l
+                  entity_id: light.lamp3l
         - type: vertical-stack
           cards:
             - type: custom:mini-climate
-              entity: climate.pritochnaia_ventiliatsiia
+              entity: climate.termostat
             - type: custom:mini-climate
-              entity: climate.pritochnaia_ventiliatsiia_2
-              #entity: climate.haier
+              entity: climate.termostat_maks
               temperature:
                 unit: '°C'
                 round: 1 
-                #  - type: thermostat
-                #    entity: climate.pritochnaia_ventiliatsiia
             - type: thermostat
               entity: climate.haier
             - type: entities
@@ -161,9 +158,9 @@
             - entity: group.right_line
         - type: entities
           entities:
-            - entity:  switch.ventiliatsiia_v_vannoi
-            - entity:  switch.ventiliatsiia_v_komnate
-            - entity:  switch.ventiliatsiia_v_komnate_high 
+            - entity:  fan.ventiliatsiia_v_vannoi
+            - entity:  fan.ventiliatsiia_v_komnate
+            - entity:  fan.ventiliatsiia_v_komnate_high 
     - type: entities
       entities:
         - entity: weather.myhome

@@ -1,0 +1,43 @@
+- name: Вентиляция в ванной
+  slave: 4
+  address: 4
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_vb
+  #- name: Вентиляция на кухне 
+  #  slave: 4
+  #  address: 7
+  #  command_on: 256
+  #  command_off: 512
+  #  verify:
+  #      state_on: 1
+  #      state_off: 0
+  #- name: Вентиляция на кухне high
+  #  slave: 4
+  #  address: 8
+  #  command_on: 256
+  #  command_off: 512
+  #  verify:
+  #      state_on: 1
+  #      state_off: 0
+- name: Вентиляция в комнате
+  slave: 2
+  address: 7
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_vk
+- name: Вентиляция в комнате high
+  slave: 2
+  address: 8
+  command_on: 256
+  command_off: 512
+  verify:
+      state_on: 1
+      state_off: 0
+  unique_id: switch_vkh

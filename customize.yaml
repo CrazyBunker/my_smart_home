@@ -6,36 +6,30 @@ sensor.current_temp:
   icon: mdi:temperature-celsius
 device_tracker.redmi_note_8t: {}
 
-switch.lamp1l:
+light.lamp1l:
   icon: mdi:lightbulb
-switch.lamp2l:
+light.lamp2l:
   icon: mdi:lightbulb
-switch.lamp3l:
+light.lamp3l:
   icon: mdi:lightbulb
-switch.lamp1r:
+light.lamp1r:
   icon: mdi:lightbulb
-switch.lamp2r:
+light.lamp2r:
   icon: mdi:lightbulb
-switch.lamp3r:
+light.lamp3r:
   icon: mdi:lightbulb
 switch.klapan_kholodnoi_vody:
   icon: mdi:water-pump
-switch.lampk1:
+light.lampk1:
   icon: mdi:lightbulb-on-outline
-switch.lampk2:
+light.lampk2:
   icon: mdi:lightbulb-on-outline
-switch.lampb1:
+light.lampb1:
   icon: mdi:toilet
-switch.ventiliatsiia_v_vannoi:
-  icon: mdi:fan
-switch.ventiliatsiia_na_kukhne:
-  icon: mdi:fan
-switch.ventiliatsiia_na_kukhne_high:
-  icon: mdi:fan-speed-2
 sensor.powerman_load:
    device_class: battery
-sensor.kommunalka:
-   device_class: illumination 
+#sensor.kommunalka:
+#   device_class: illumination 
 
   #device_tracker.redmi_note_8t:
   #    theme: >

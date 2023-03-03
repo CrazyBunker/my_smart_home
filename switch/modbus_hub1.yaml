@@ -1,157 +1,155 @@
-- name: lamp2L
-  slave: 2
-  address: 1
-  command_on: 256
-  command_off: 512
-  unique_id: switch_2l
-  verify:
-      state_on: 1
-      state_off: 0
-- name: lamp2R
-  slave: 2
-  address: 2
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_2r
-- name: lamp3R
-  slave: 2
-  address: 3
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_3r
-- name: lamp3L
-  slave: 2
-  address: 4
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_3l
-- name: lamp1R
-  slave: 2
-  address: 5
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_1r
-- name: lamp1L
-  slave: 2
-  address: 6
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_1l
-  #- platform: modbus
-  #  scan_interval: 1
-  #  registers:
-  #  - name: lamp7
-  #    hub: hub1
-  #    slave: 2
-  #    address: 7
-  #    command_on: 256
-  #    command_off: 512
-  #    state_on: 1
-  #    state_off: 0
-  #- platform: modbus
-  #  scan_interval: 1
-  #  registers:
-  #  - name: lamp8
-  #    hub: hub1
-  #    slave: 2
-  #    address: 8
-  #    command_on: 256
-  #    command_off: 512
-  #    state_on: 1
-  #    state_off: 0
+#- name: lamp2L
+#  slave: 2
+#  address: 1
+#  command_on: 256
+#  command_off: 512
+#  unique_id: switch_2l
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#- name: lamp2R
+#  slave: 2
+#  address: 2
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_2r
+#- name: lamp3R
+#  slave: 2
+#  address: 3
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_3r
+#- name: lamp3L
+#  slave: 2
+#  address: 4
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_3l
+#- name: lamp1R
+#  slave: 2
+#  address: 5
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_1r
+#- name: lamp1L
+#  slave: 2
+#  address: 6
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_1l
+#- platform: modbus
+#  scan_interval: 1
+#  registers:
+#  - name: lamp7
+#    hub: hub1
+#    slave: 2
+#    address: 7
+#    command_on: 256
+#    command_off: 512
+#    state_on: 1
+#    state_off: 0
+#- platform: modbus
+#  scan_interval: 1
+#  registers:
+#  - name: lamp8
+#    hub: hub1
+#    slave: 2
+#    address: 8
+#    command_on: 256
+#    command_off: 512
+#    state_on: 1
+#    state_off: 0
 - name: Клапан холодной воды
   slave: 1
   address: 6
   command_on: 100
   command_off: 200
   verify:
-      address: 5
-#  verify_state: true
       state_on: 0 
       state_off: 100
-- name: lampK1
-  slave: 4
-  address: 1
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_k
-- name: lampK2
-  slave: 4
-  address: 2
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_k2
-- name: lampB1
-  slave: 4
-  address: 3
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_b
-- name: Вентиляция в ванной
-  slave: 4
-  address: 4
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_vb
-- name: Вентиляция на кухне 
-  slave: 4
-  address: 7
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-- name: Вентиляция на кухне high
-  slave: 4
-  address: 8
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-- name: Вентиляция в комнате
-  slave: 2
-  address: 7
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_vk
-- name: Вентиляция в комнате high
-  slave: 2
-  address: 8
-  command_on: 256
-  command_off: 512
-  verify:
-      state_on: 1
-      state_off: 0
-  unique_id: switch_vkh
-#  command_off: 0
+#- name: lampK1
+#  slave: 4
+#  address: 1
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_k
+#- name: lampK2
+#  slave: 4
+#  address: 2
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_k2
+#- name: lampB1
+#  slave: 4
+#  address: 3
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_b
+#- name: Вентиляция в ванной
+#  slave: 4
+#  address: 4
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_vb
+#- name: Вентиляция на кухне 
+#  slave: 4
+#  address: 7
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#- name: Вентиляция на кухне high
+#  slave: 4
+#  address: 8
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#- name: Вентиляция в комнате
+#  slave: 2
+#  address: 7
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_vk
+#- name: Вентиляция в комнате high
+#  slave: 2
+#  address: 8
+#  command_on: 256
+#  command_off: 512
+#  verify:
+#      state_on: 1
+#      state_off: 0
+#  unique_id: switch_vkh
+# command_off: 0

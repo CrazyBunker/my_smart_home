@@ -14,8 +14,9 @@
 
 
 - platform: generic_thermostat
-  name: Приточная вентиляция
-  heater: switch.ventiliatsiia_v_komnate
+  name: Термостат
+  unique_id: termostat1
+  heater: fan.ventiliatsiia_v_komnate
   target_sensor: sensor.temperatura_v_komnate
   min_temp: 20
   max_temp: 30
@@ -36,8 +37,9 @@
   precision: 0.1
 
 - platform: generic_thermostat
-  name: Приточная вентиляция 2
-  heater: switch.ventiliatsiia_v_komnate_high
+  name: Термостат макс
+  unique_id: termostat2
+  heater: fan.ventiliatsiia_v_komnate_high
   target_sensor: sensor.temperatura_v_komnate
   min_temp: 20
   max_temp: 30

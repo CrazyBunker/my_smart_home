@@ -84,12 +84,12 @@
     event: enter
   condition: []
   action:
-  - service: switch.turn_on
+  - service: light.turn_on
     data: {}
-    entity_id: switch.lamp1l
-  - service: switch.turn_on
+    entity_id: light.lamp1l
+  - service: light.turn_on
     data: {}
-    entity_id: switch.lampk1
+    entity_id: light.lampk1
   - service: notify.telegram
     data:
       message: Включить свет в зоне home
@@ -122,7 +122,7 @@
         entity_id: device_tracker.redmi_note_8t
         zone: zone.home
   action:
-  - service: switch.turn_off
+  - service: light.turn_off
     data: {}
     entity_id: ' group.all_light'
   - service: notify.telegram
@@ -148,9 +148,9 @@
     - thu
     - fri
   action:
-  - service: switch.turn_on
+  - service: light.turn_on
     data: {}
-    entity_id: switch.lamp1l
+    entity_id: light.lamp1l
   mode: single
 - id: '1619043497285'
   alias: Сброс клапана холодной воды
@@ -317,13 +317,13 @@
         entity_id: sensor.datchik_dvizheniia_v_koridore
         state: '1'
       sequence:
-      - service: switch.turn_on
+      - service: light.turn_on
         data: {}
-        entity_id: switch.lampk1
+        entity_id: light.lampk1
     default:
-    - service: switch.turn_off
+    - service: light.turn_off
       data: {}
-      entity_id: switch.lampk1
+      entity_id: light.lampk1
   mode: single
 - id: '1630521276978'
   alias: Управленеи светом в ванной
@@ -339,13 +339,13 @@
         entity_id: sensor.datchik_dvizheniia_v_vannoi
         state: '1'
       sequence:
-      - service: switch.turn_on
+      - service: light.turn_on
         data: {}
-        entity_id: switch.lampb1
+        entity_id: light.lampb1
     default:
-    - service: switch.turn_off
+    - service: light.turn_off
       data: {}
-      entity_id: switch.lampb1
+      entity_id: light.lampb1
   mode: single
 - id: '1630523224129'
   alias: Вентиляторв в ванной
@@ -362,17 +362,17 @@
       seconds: 0
   condition: []
   action:
-  - service: switch.turn_on
+  - service: fan.turn_on
     data: {}
-    entity_id: switch.ventiliatsiia_v_vannoi
+    entity_id: fan.ventiliatsiia_v_vannoi
   - delay:
       hours: 0
       minutes: 15
       seconds: 0
       milliseconds: 0
-  - service: switch.turn_off
+  - service: fan.turn_off
     data: {}
-    entity_id: switch.ventiliatsiia_v_vannoi
+    entity_id: fan.ventiliatsiia_v_vannoi
   mode: single
 - id: '1640958788244'
   alias: У нас гости
